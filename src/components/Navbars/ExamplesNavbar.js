@@ -112,7 +112,7 @@ export default function ExamplesNavbar() {
           </div>
           <Nav navbar>
             <NavItem>
-              <NavLink tag={Link} to="/landing-page">
+              <NavLink tag={Link} to="/recommendations">
                 Movies
               </NavLink>
             </NavItem>
