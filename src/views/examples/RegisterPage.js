@@ -25,7 +25,6 @@ import {
 
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import Footer from "components/Footer/Footer.js";
 import UserRegistrationForm from "components/UserRegistrationForm";
 
 export default function RegisterPage() {
@@ -115,7 +114,6 @@ export default function RegisterPage() {
             </Container>
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );
