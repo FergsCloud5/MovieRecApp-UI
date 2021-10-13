@@ -126,6 +126,11 @@ export default function ExamplesNavbar() {
                 Register
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/admin-page">
+                Admin
+              </NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Container>
