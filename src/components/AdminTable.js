@@ -22,12 +22,9 @@ import React from "react";
 // reactstrap components
 import {
   Card,
-  CardHeader,
   CardBody,
   Table,
   Button,
-  Label,
-  FormGroup,
   Form,
   Input,
   InputGroupAddon,
@@ -41,16 +38,16 @@ export default function AdminTable() {
     const [searchedUserID, setSearchedUserID] = React.useState("");
     
     React.useEffect(() => {
-        const baseURL =  "https://jsonplaceholder.typicode.com/users";
+        const baseURL =  "http://ec2-3-23-92-210.us-east-2.compute.amazonaws.com:5000/users";
         axios.get(baseURL).then((response) => {
-            setUsers(response.data);
+            setUsers(response.data.splice(0,7));
         });
     }, []);
 
     function deleteUser(userID) {
         console.log("User ID");
         console.log(userID);
-        const deleteURL = "https://jsonplaceholder.typicode.com/users/" + userID;
+        const deleteURL = "http://ec2-3-23-92-210.us-east-2.compute.amazonaws.com:5000/users/" + userID;
         console.log(deleteURL);
         axios
             .delete(deleteURL)
@@ -62,16 +59,16 @@ export default function AdminTable() {
     function searchUser(userID) {
         console.log("User ID");
         console.log(userID);
-        const searchUserURL = "https://jsonplaceholder.typicode.com/users/" + userID;
+        const searchUserURL = "http://ec2-3-23-92-210.us-east-2.compute.amazonaws.com:5000/users/" + userID;
         axios
             .get(searchUserURL)
             .then((response) => {
-                setUsers([response.data]);
+                setUsers(response.data);
             });
     };
 
     function showUsers() {
-        const URL = "https://jsonplaceholder.typicode.com/users/";
+        const URL = "http://ec2-3-23-92-210.us-east-2.compute.amazonaws.com:5000/users";
         axios
             .get(URL)
             .then((response) => {
@@ -119,27 +116,22 @@ export default function AdminTable() {
                                 <th className="header">First Name</th>
                                 <th className="header">Last Name</th>
                                 <th className="header">Email</th>
-                                <th className="header">Address</th>
-                                <th className="header">Address</th>
-                                <th className="header">Address</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((user => 
+                            {users.map((user) => 
                                 <tr>
-                                    <td>{user.username}</td>
-                                    <td>{user.name}</td>
-                                    <td>name Last </td>
+                                    <td>{user.userID}</td>
+                                    <td>{user.nameFirst}</td>
+                                    <td>{user.nameLast}</td>
                                     <td>{user.email}</td>
-                                    <td>address</td>
-                                    <td>{user.id}</td>
                                     <td>
-                                        <Button onClick={() => deleteUser(user.id)} className="btn-round" color="primary" size="sm">
+                                        <Button onClick={() => deleteUser(user.userID)} className="btn-round" color="primary" size="sm">
                                             Delete
                                         </Button>
                                     </td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </Table>
                     </Form>
