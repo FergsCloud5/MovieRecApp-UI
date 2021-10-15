@@ -70,7 +70,7 @@ export default function ProfilePage() {
           />
           <Container className="align-items-center">
             <Row>
-              <Col className="ml-auto mr-auto" lg="12" md="6">
+              <Col className="ml-auto mr-auto" lg="12" lg="12">
                 <AdminTable />
               </Col>
             </Row>

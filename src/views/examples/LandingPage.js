@@ -18,16 +18,15 @@
 import React from "react";
 // reactstrap components
 import {
-  Container,
-  Row,
-  Col,
+
 } from "reactstrap";
 
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import MovieCard from "components/MovieCard";
+import MovieRecs from "components/MovieRecs";
 
 export default function LandingPage() {
+  
   React.useEffect(() => {
     document.body.classList.toggle("landing-page");
     // Specify how to clean up after this effect:
@@ -35,6 +34,7 @@ export default function LandingPage() {
       document.body.classList.toggle("landing-page");
     };
   },[]);
+
   return (
     <>
       <ExamplesNavbar />
@@ -71,22 +71,7 @@ export default function LandingPage() {
             src={require("assets/img/cercuri.png").default}
           />
           <div className="content">
-            <Container>
-              <Row>
-                <h1>Your Movie Recommendations</h1>
-              </Row>
-              <Row>
-                <Col md="4">
-                  <MovieCard />
-                </Col>
-                <Col md="4">
-                  <MovieCard />
-                </Col>
-                <Col md="4">
-                  <MovieCard />
-                </Col>
-              </Row>
-            </Container>
+            <MovieRecs />
           </div>
         </div>
       </div>
